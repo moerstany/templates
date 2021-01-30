@@ -11,7 +11,7 @@ using namespace std;
 //GitHub
 //Repository - это хранилище исходных кодов.
 
-#ifdef OVERLOAD_EXAMPLES
+
 void function()
 {
 	cout << "Без параметров" << endl;
@@ -21,20 +21,23 @@ int function(int a)
 	cout << "Один параметр типа int" << endl;
 	return 0;
 }
-#endif // OVERLOAD_EXAMPLES
 
 const int ROWS = 8;
-const int COLS = 5;
+const int COLS = 5
 
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);
 void FillRand(char arr[], const int n);
+
+void FillRand(int arr[ROWS][COLS], const int m, const int n);
+void FillRand(int arr[ROWS][COLS], const int m, const int n);
 void FillRand(int arr[ROWS][COLS], const int m, const int n);
 
-void Print(int arr[], const int n);
-void Print(double arr[], const int n);
-void Print(char arr[], const int n);
-void Print(int arr[ROWS][COLS], const int m, const int n);
+template <typename T>void Print(T arr[], const int n);
+template <typename T> void Print(T arr[ROWS][COLS], const int m, const int n);
+
+template <typename T> T Sum(T arr[], const n);
+template <typename T> T Sum(T arr[ROWS][COLS], const n, const m);
 
 void main()
 {
@@ -82,18 +85,20 @@ void FillRand(char arr[], const int n)
 		arr[i] = rand();
 	}
 }
+
 void FillRand(int arr[ROWS][COLS], const int m, const int n)
 {
 	for (int i = 0; i < m; i++)
 	{
 		for (int j = 0; j < n; j++)
 		{
-			arr[i][j] = rand() % 100;
+			arr[i][j] = rand() % 10000;
+			arr[i][j] /= 100;
+
 		}
 	}
 }
-
-void Print(int arr[], const int n)
+template <typename T> void Print(T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -101,24 +106,7 @@ void Print(int arr[], const int n)
 	}
 	cout << endl;
 }
-void Print(double arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
-}
-void Print(char arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
-}
-
-void Print(int arr[ROWS][COLS], const int m, const int n)
+template <typename T> void Print(T arr[ROWS][COLS], const int m, const int n)
 {
 	for (int i = 0; i < m; i++)
 	{
@@ -128,4 +116,14 @@ void Print(int arr[ROWS][COLS], const int m, const int n)
 		}
 		cout << endl;
 	}
+}
+
+template <typename T> T Sum(T arr[], const n)
+{
+
+}
+
+template <typename T> T Sum(T arr[ROWS][COLS], const n, const m)
+{
+for (int i = 0; i < n; i++)
 }
